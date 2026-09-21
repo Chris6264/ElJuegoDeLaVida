@@ -1,7 +1,18 @@
 package mx.tecnm.culiacan;
 
+/**
+ * Punto de entrada del programa "El Juego de la Vida".
+ *
+ * Se encarga de armar las dependencias y de iniciar la partida.
+ *
+ */
 public class App {
-    public static void main(String[] args){
+    /**
+     * Crea las reglas del juego se las entrega a ElJuegoDeLaVida y comienza la partida.
+     *
+     * @param args argumentos de linea de comandos (no se utilizan)
+     */
+    public static void main(String[] args) {
         Reglas reglas = new ReglasDelJuego();
         ElJuegoDeLaVida elJuegoDeLaVida = new ElJuegoDeLaVida(reglas);
         elJuegoDeLaVida.jugar();
