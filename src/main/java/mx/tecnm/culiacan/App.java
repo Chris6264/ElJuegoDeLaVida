@@ -8,13 +8,14 @@ package mx.tecnm.culiacan;
  */
 public class App {
     /**
-     * Crea las reglas del juego se las entrega a ElJuegoDeLaVida y comienza la partida.
+     * Crea las reglas y la vista del juego se las entrega a ElJuegoDeLaVida y comienza la partida.
      *
      * @param args argumentos de linea de comandos (no se utilizan)
      */
     public static void main(String[] args) {
         Reglas reglas = new ReglasDelJuego();
-        ElJuegoDeLaVida elJuegoDeLaVida = new ElJuegoDeLaVida(reglas);
+        VistaConsola vistaConsola = new VistaConsola();
+        ElJuegoDeLaVida elJuegoDeLaVida = new ElJuegoDeLaVida(reglas,vistaConsola);
         elJuegoDeLaVida.jugar();
     }
 }
