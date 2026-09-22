@@ -133,7 +133,3 @@ contra la anterior):
 ## Requisitos
 
 - JDK 17 o superior (se usan `record` y `String.repeat`).
-
-## Autor
-
-Proyecto academico — Tecnologico Nacional de Mexico, campus Culiacan.
