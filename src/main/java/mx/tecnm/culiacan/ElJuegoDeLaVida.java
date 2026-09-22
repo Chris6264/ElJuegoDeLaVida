@@ -62,7 +62,7 @@ public class ElJuegoDeLaVida {
 
         tablero.iniciar(datosIniciales);
 
-        vista.mostrarDatosJuego(tablero, numeroGeneraciones, datosIniciales );
+        vista.mostrarDatosJuego(tablero, numeroGeneraciones, datosIniciales);
 
         List<HistorialGeneracion> historial = simularGeneraciones(tablero, numeroGeneraciones);
 
@@ -98,7 +98,6 @@ public class ElJuegoDeLaVida {
      */
     private int pedirNumeroGeneraciones() {
         vista.pedirNumeroGeneraciones();
-
         int numeroGeneraciones = Keyboard.readInt();
 
         reglas.validarNumeroGeneraciones(numeroGeneraciones);
