@@ -109,8 +109,7 @@ iniciales) con un mensaje que explica el motivo.
 - No se valida que las coordenadas no se repitan (por ejemplo,
   `2, 0,1, 0,1` indica 2 organismos pero solo coloca 1 con vida).
 - Solo se detecta como "fin del juego" la repeticion contra la generacion
-  inmediata anterior, no contra generaciones anteriores en general
-  (osciladores).
+  inmediata anterior, no contra generaciones anteriores en general.
 
 ## Ejemplos para probar
 
@@ -124,12 +123,11 @@ iniciales) con un mensaje que explica el motivo.
 4, 1,1, 1,2, 2,1, 2,2
 ```
 
-**Corre hasta el limite de generaciones** (blinker, oscila sin repetirse
-contra la anterior):
+**Corre hasta el limite de generaciones**
 ```
 3, 1,0, 1,1, 1,2
 ```
 
 ## Requisitos
 
-- JDK 17 o superior (se usan `record` y `String.repeat`).
+- JDK 17 o superior (se usan `record`)
