@@ -33,10 +33,10 @@ presione Enter para avanzar a la siguiente.
 
 Cada celda cambia de estado segun sus vecinos vivos (8 celdas alrededor):
 
-- Un organismo **vivo** con menos de 2 vecinos muere (soledad).
+- Un organismo **vivo** con menos de 2 vecinos muere.
 - Un organismo **vivo** con 2 o 3 vecinos sobrevive.
-- Un organismo **vivo** con mas de 3 vecinos muere (sobrepoblacion).
-- Una celda **muerta** con exactamente 3 vecinos nace.
+- Un organismo **vivo** con mas de 3 vecinos muere.
+- Un organismo **muerto** con exactamente 3 vecinos nace.
 
 ## Condiciones de fin del juego
 
@@ -49,9 +49,7 @@ Si ninguna de las dos ocurre, el juego termina al alcanzar el numero de
 generaciones indicado por el usuario.
 
 > **Nota:** la deteccion de "generacion repetida" solo compara con la
-> generacion inmediata anterior. Patrones ciclicos como el *blinker*, que
-> alternan entre dos formas indefinidamente, no se detectan como fin del
-> juego y la simulacion corre hasta el numero de generaciones solicitado.
+> generacion inmediata anterior. 
 
 ## Historial de movimientos
 
@@ -76,7 +74,7 @@ mx.tecnm.culiacan
 └── Keyboard                      Lectura de entrada por consola (Lewis & Loftus)
 ```
 
-### Diseno
+### Diseño
 
 - **`App`** es el unico lugar donde se crean las implementaciones concretas
   (`ReglasDelJuego`, `VistaConsola`) e inyecta las dependencias en
