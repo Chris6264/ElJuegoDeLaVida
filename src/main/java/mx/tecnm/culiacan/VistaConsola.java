@@ -123,11 +123,7 @@ public class VistaConsola {
      * @param datosIniciales texto introducido por el usuario con las
      *                       coordenadas iniciales
      */
-    public void mostrarDatosJuego(
-            Tablero tablero,
-            int numeroGeneraciones,
-            String datosIniciales) {
-
+    public void mostrarDatosJuego(Tablero tablero, int numeroGeneraciones, String datosIniciales) {
         System.out.println();
 
         System.out.println(

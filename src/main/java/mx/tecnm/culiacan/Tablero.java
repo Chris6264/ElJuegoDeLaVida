@@ -33,10 +33,10 @@ public class Tablero {
      * @param numeroFilas numero de filas, entre 2 y 20
      * @param numeroColumnas numero de columnas, entre 2 y 20
      * @param reglas reglas que se aplicaran al tablero
-     * @throws ValidacionTableroException si las filas o las columnas estan fuera del rango permitido
+     * @throws ReglasException si las filas o las columnas estan fuera del rango permitido
      */
     public Tablero(int numeroFilas, int numeroColumnas, Reglas reglas) {
-        validacionTablero(numeroFilas, numeroColumnas);
+        reglas.validacionTablero(numeroFilas, numeroColumnas);
         this.numeroFilas = numeroFilas;
         this.numeroColumnas = numeroColumnas;
         this.reglas = reglas;
@@ -170,7 +170,7 @@ public class Tablero {
      */
     private int contarVecinosVivos(int fila, int columna) {
         int vivos = 0;
-        for (int definicionFila = -1; definicionFila <= 1; definicionFila++) {
+        for (int definicionFila = -1; definicionFila <= 1; definicionFila++) { // -1, 0, 1
             for (int definicionColumna = -1; definicionColumna <= 1; definicionColumna++) {
                 if (definicionFila == 0 && definicionColumna == 0) continue;
 
@@ -204,18 +204,6 @@ public class Tablero {
             }
         }
         return List.copyOf(registros);
-    }
-
-    /**
-     * Verifica que las dimensiones del tablero esten entre 2 y 20.
-     *
-     * @param numeroFilas numero de filas solicitado
-     * @param numeroColumnas numero de columnas solicitado
-     * @throws ValidacionTableroException si las filas o las columnas estan fuera del rango
-     */
-    private void validacionTablero(int numeroFilas, int numeroColumnas) {
-        if (numeroFilas > 20 || numeroFilas < 2) throw new ValidacionTableroException("El rango de filas debe ser entre 2 y 20.");
-        if (numeroColumnas > 20 || numeroColumnas < 2) throw new ValidacionTableroException("El rango de columnas debe ser entre 2 y 20.");
     }
 
     /**

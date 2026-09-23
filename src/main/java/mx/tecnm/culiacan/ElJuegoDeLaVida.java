@@ -48,10 +48,8 @@ public class ElJuegoDeLaVida {
      * los organismos iniciales. Despues inicializa el tablero, ejecuta la
      * simulacion y finalmente muestra el historial de generaciones.
      *
-     * @throws ValidacionTableroException si las dimensiones del tablero
-     *         estan fuera del rango permitido
-     * @throws ReglasException si el numero de generaciones o los datos
-     *         iniciales no cumplen las reglas establecidas
+     * @throws ReglasException si las dimensiones del tablero estan fuera del rango permitido,
+     * si el numero de generaciones o los datos iniciales no cumplen las reglas establecidas
      */
     public void jugar() {
         Tablero tablero = crearTablero();
@@ -76,7 +74,7 @@ public class ElJuegoDeLaVida {
      * leidos desde la entrada estandar mediante {@link Keyboard}.
      *
      * @return tablero vacio con las dimensiones indicadas por el usuario
-     * @throws ValidacionTableroException si las dimensiones estan fuera
+     * @throws ReglasException si las dimensiones estan fuera
      *         del rango permitido
      */
     private Tablero crearTablero() {
