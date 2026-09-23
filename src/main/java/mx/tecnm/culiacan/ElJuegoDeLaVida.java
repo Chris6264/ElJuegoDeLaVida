@@ -53,19 +53,16 @@ public class ElJuegoDeLaVida {
      */
     public void jugar() {
         Tablero tablero = crearTablero();
-
         int numeroGeneraciones = pedirNumeroGeneraciones();
-
-        String datosIniciales = pedirDatosIniciales();
-
-        tablero.iniciar(datosIniciales);
+        String datosIniciales = iniciarTablero(tablero);
 
         vista.mostrarDatosJuego(tablero, numeroGeneraciones, datosIniciales);
 
         List<HistorialGeneracion> historial = simularGeneraciones(tablero, numeroGeneraciones);
-
         vista.mostrarHistorial(historial);
     }
+
+
 
     /**
      * Solicita las dimensiones del tablero y crea una nueva instancia.
@@ -78,13 +75,22 @@ public class ElJuegoDeLaVida {
      *         del rango permitido
      */
     private Tablero crearTablero() {
-        vista.pedirNumeroFilas();
-        int numeroFilas = Keyboard.readInt();
+        int numeroFilas;
+        int numeroColumnas;
 
-        vista.pedirNumeroColumnas();
-        int numeroColumnas = Keyboard.readInt();
+        while (true) {
+            try {
+                vista.pedirNumeroFilas();
+                numeroFilas = Keyboard.readInt();
 
-        return new Tablero(numeroFilas, numeroColumnas, reglas);
+                vista.pedirNumeroColumnas();
+                numeroColumnas = Keyboard.readInt();
+
+                return new Tablero(numeroFilas, numeroColumnas, reglas);
+            } catch (ReglasException e) {
+                vista.mostrarError(e.getMessage());
+            }
+        }
     }
 
     /**
@@ -95,25 +101,41 @@ public class ElJuegoDeLaVida {
      *         rango permitido
      */
     private int pedirNumeroGeneraciones() {
-        vista.pedirNumeroGeneraciones();
-        int numeroGeneraciones = Keyboard.readInt();
-
-        reglas.validarNumeroGeneraciones(numeroGeneraciones);
-
-        return numeroGeneraciones;
+        while (true) {
+            try {
+                vista.pedirNumeroGeneraciones();
+                int numeroGeneraciones = Keyboard.readInt();
+                reglas.validarNumeroGeneraciones(numeroGeneraciones);
+                return numeroGeneraciones;
+            } catch (ReglasException e) {
+                vista.mostrarError(e.getMessage());
+            }
+        }
     }
 
     /**
-     * Solicita al usuario los organismos y coordenadas iniciales.
+     * Solicita al usuario los organismos y coordenadas iniciales, y los aplica
+     * al tablero.
      *
      * La vista muestra el formato esperado y este metodo obtiene la cadena
-     * introducida mediante {@link Keyboard}.
+     * introducida mediante {@link Keyboard}. Si los datos no son validos (por
+     * formato o porque incumplen alguna regla), se muestra el error y se vuelve
+     * a pedir hasta que el tablero se inicie correctamente.
      *
-     * @return datos iniciales introducidos por el usuario
+     * @param tablero tablero ya creado, al que se le colocaran los organismos iniciales
+     * @return datos iniciales introducidos por el usuario, ya validados
      */
-    private String pedirDatosIniciales() {
-        vista.pedirDatosIniciales();
-        return Keyboard.readString();
+    private String iniciarTablero(Tablero tablero) {
+        while (true) {
+            try {
+                vista.pedirDatosIniciales();
+                String datosIniciales = Keyboard.readString();
+                tablero.iniciar(datosIniciales);
+                return datosIniciales;
+            } catch (ReglasException e) {
+                vista.mostrarError(e.getMessage());
+            }
+        }
     }
 
     /**

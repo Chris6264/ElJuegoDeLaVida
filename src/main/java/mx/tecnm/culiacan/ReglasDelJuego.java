@@ -66,21 +66,27 @@ public class ReglasDelJuego implements Reglas{
      */
     @Override
     public void validarDatosIniciales(String[] datosOrganismos, int numeroFilas, int numeroColumnas) {
-        int cantidadOrganismo = Integer.parseInt(datosOrganismos[0]) , capacidadTablero = (numeroFilas * numeroColumnas), fila , columna;
+        try {
+            int cantidadOrganismo = Integer.parseInt(datosOrganismos[0]);
+            int capacidadTablero = numeroFilas * numeroColumnas;
 
-        if(cantidadOrganismo > (capacidadTablero / 2) || cantidadOrganismo < 0){
-            throw new ReglasException("La cantidad de organismos debe ser de 0 a " + capacidadTablero / 2);
-        }
+            if (cantidadOrganismo > (capacidadTablero / 2) || cantidadOrganismo < 0) {
+                throw new ReglasException("La cantidad de organismos debe ser de 0 a " + capacidadTablero / 2);
+            }
 
-        if (datosOrganismos.length - 1 != cantidadOrganismo) {
-            throw new ReglasException("Se indicaron " + cantidadOrganismo + " organismos pero se dieron " + (datosOrganismos.length - 1));
-        }
+            if (datosOrganismos.length - 1 != cantidadOrganismo) {
+                throw new ReglasException("Se indicaron " + cantidadOrganismo + " organismos pero se dieron " + (datosOrganismos.length - 1));
+            }
 
-        for (int i = 1; i < datosOrganismos.length; i++) {
-            String[] coordenadas = datosOrganismos[i].split(",");
-            fila = Integer.parseInt(coordenadas[0]);
-            columna = Integer.parseInt(coordenadas[1]);
-            validarCoordenadas(fila,columna,numeroFilas,numeroColumnas);
+            for (int i = 1; i < datosOrganismos.length; i++) {
+                String[] coordenadas = datosOrganismos[i].split(",");
+                int fila = Integer.parseInt(coordenadas[0]);
+                int columna = Integer.parseInt(coordenadas[1]);
+                validarCoordenadas(fila, columna, numeroFilas, numeroColumnas);
+            }
+
+        } catch (NumberFormatException | ArrayIndexOutOfBoundsException e) {
+            throw new ReglasException("Formato de datos invalido. Use: numeroOrganismos, fila,columna, ...");
         }
     }
 
