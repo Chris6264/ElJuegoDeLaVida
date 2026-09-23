@@ -16,6 +16,13 @@ package mx.tecnm.culiacan;
 public interface Reglas {
 
     /**
+     * Verifica que las dimensiones del tablero esten entre 2 y 20.
+     * @param numeroFilas numero de filas del tablero
+     * @param numeroColumnas numero de columnas del tablero
+     * @throws ReglasException si los datos del tablero son incorrectos
+     */
+    void validacionTablero(int numeroFilas, int numeroColumnas);
+    /**
      * Verifica que el numero de generaciones este dentro del rango permitido.
      *
      * @param numeroGeneraciones numero de generaciones solicitado por el usuario

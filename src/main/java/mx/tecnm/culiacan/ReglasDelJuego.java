@@ -26,6 +26,18 @@ import java.util.Arrays;
 public class ReglasDelJuego implements Reglas{
 
     /**
+     * Verifica que las dimensiones del tablero esten entre 2 y 20.
+     *
+     * @param numeroFilas numero de filas solicitado
+     * @param numeroColumnas numero de columnas solicitado
+     * @throws ReglasException si las filas o las columnas estan fuera del rango
+     */
+    public void validacionTablero(int numeroFilas, int numeroColumnas) {
+        if (numeroFilas > 20 || numeroFilas < 2) throw new ReglasException("El rango de filas debe ser entre 2 y 20.");
+        if (numeroColumnas > 20 || numeroColumnas < 2) throw new ReglasException("El rango de columnas debe ser entre 2 y 20.");
+    }
+
+    /**
      * Verifica que el numero de generaciones este entre 1 y 50.
      *
      * @param numeroGeneraciones numero de generaciones solicitado por el usuario
