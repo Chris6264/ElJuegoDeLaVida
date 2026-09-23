@@ -62,7 +62,6 @@ public class Tablero {
     public void iniciar(String datosIniciales) {
         String[] datosOrganismos = datosIniciales.split(",\\s+");
         reglas.validarDatosIniciales(datosOrganismos, numeroFilas, numeroColumnas);
-
         for (int i = 1; i < datosOrganismos.length; i++) {
             String[] coordenadas = datosOrganismos[i].split(",");
             int fila = Integer.parseInt(coordenadas[0]);
@@ -172,15 +171,15 @@ public class Tablero {
         int vivos = 0;
         for (int definicionFila = -1; definicionFila <= 1; definicionFila++) { // -1, 0, 1
             for (int definicionColumna = -1; definicionColumna <= 1; definicionColumna++) {
-                if (definicionFila == 0 && definicionColumna == 0) continue;
+
+                if (definicionFila == 0 && definicionColumna == 0)  continue;
 
                 int x = fila + definicionFila;
                 int y = columna + definicionColumna;
 
-                if (x >= 0 && x < numeroFilas && y >= 0 && y < numeroColumnas
-                        && matrizTablero[x][y] == EstadoOrganismo.VIVO) {
-                    vivos++;
-                }
+                try {
+                    if (matrizTablero[x][y] == EstadoOrganismo.VIVO) vivos++;
+                } catch (ArrayIndexOutOfBoundsException _) {}
             }
         }
         return vivos;

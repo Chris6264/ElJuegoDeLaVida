@@ -236,4 +236,9 @@ public class VistaConsola {
 
         System.out.println(SEPARADOR);
     }
+
+    public void mostrarError(String mensaje) {
+        System.out.println(mensaje);
+        System.out.println();
+    }
 }
