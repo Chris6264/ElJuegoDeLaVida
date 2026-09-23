@@ -22,6 +22,7 @@ public interface Reglas {
      * @throws ReglasException si los datos del tablero son incorrectos
      */
     void validacionTablero(int numeroFilas, int numeroColumnas);
+
     /**
      * Verifica que el numero de generaciones este dentro del rango permitido.
      *
