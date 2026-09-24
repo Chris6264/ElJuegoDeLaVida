@@ -5,18 +5,18 @@ import java.util.List;
 
 /**
  * Controlador principal de "El Juego de la Vida".
- *
+ * <p>
  * Se encarga de coordinar el flujo de una partida: solicita los datos
  * necesarios, crea el tablero, inicia la simulacion, controla el avance de
  * las generaciones y determina cuando debe terminar el juego.
- *
+ * <p>
  * La presentacion de informacion al usuario se delega en {@link VistaConsola},
  * mientras que las validaciones y reglas de evolucion de los organismos se
  * delegan en {@link Reglas}. El estado de la simulacion es administrado por
  * {@link Tablero}.
- *
+ * <p>
  * El juego termina cuando ocurre alguno de los siguientes casos:
- *
+ * <p>
  * - Todos los organismos mueren.
  * - Una generacion es igual a la anterior.
  * - Se alcanza el numero maximo de generaciones solicitado.
@@ -43,7 +43,7 @@ public class ElJuegoDeLaVida {
 
     /**
      * Ejecuta una partida completa de "El Juego de la Vida".
-     *
+     * <p>
      * Solicita las dimensiones del tablero, el numero de generaciones y
      * los organismos iniciales. Despues inicializa el tablero, ejecuta la
      * simulacion y finalmente muestra el historial de generaciones.
@@ -66,7 +66,7 @@ public class ElJuegoDeLaVida {
 
     /**
      * Solicita las dimensiones del tablero y crea una nueva instancia.
-     *
+     * <p>
      * La vista muestra los mensajes correspondientes y los valores son
      * leidos desde la entrada estandar mediante {@link Keyboard}.
      *
@@ -116,7 +116,7 @@ public class ElJuegoDeLaVida {
     /**
      * Solicita al usuario los organismos y coordenadas iniciales, y los aplica
      * al tablero.
-     *
+     * <p>
      * La vista muestra el formato esperado y este metodo obtiene la cadena
      * introducida mediante {@link Keyboard}. Si los datos no son validos (por
      * formato o porque incumplen alguna regla), se muestra el error y se vuelve
@@ -124,6 +124,7 @@ public class ElJuegoDeLaVida {
      *
      * @param tablero tablero ya creado, al que se le colocaran los organismos iniciales
      * @return datos iniciales introducidos por el usuario, ya validados
+     * @throws ReglasException los datos iniciales no cumplen con el formato indicado o las coordenas son invalidas
      */
     private String iniciarTablero(Tablero tablero) {
         while (true) {
@@ -140,7 +141,7 @@ public class ElJuegoDeLaVida {
 
     /**
      * Ejecuta las generaciones de la simulacion y registra el historial.
-     *
+     * <p>
      * En cada iteracion muestra la generacion actual, guarda sus registros
      * y comprueba si el juego debe terminar. Si puede continuar, espera que
      * el usuario presione Enter y avanza el tablero a la siguiente generacion.
@@ -148,6 +149,7 @@ public class ElJuegoDeLaVida {
      * @param tablero tablero inicializado que se va a simular
      * @param numeroGeneraciones numero maximo de generaciones a ejecutar
      * @return lista con las generaciones ejecutadas durante la partida
+     *
      */
     private List<HistorialGeneracion> simularGeneraciones(Tablero tablero, int numeroGeneraciones) {
         List<HistorialGeneracion> historial = new ArrayList<>();
@@ -171,7 +173,7 @@ public class ElJuegoDeLaVida {
 
     /**
      * Determina si la partida debe terminar.
-     *
+     * <p>
      * El juego finaliza si todos los organismos han muerto o si la
      * generacion actual es igual a la anterior. La vista muestra el
      * motivo correspondiente.
@@ -195,7 +197,7 @@ public class ElJuegoDeLaVida {
 
     /**
      * Pausa la simulacion hasta que el usuario presione Enter.
-     *
+     * <p>
      * La vista muestra el mensaje correspondiente y {@link Keyboard}
      * espera la entrada del usuario.
      */

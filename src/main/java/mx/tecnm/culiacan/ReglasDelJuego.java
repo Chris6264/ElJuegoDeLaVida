@@ -4,19 +4,19 @@ import java.util.Arrays;
 
 /**
  * Implementacion de las reglas clasicas de "El Juego de la Vida".
- *
+ * <p>
  * Limites que aplica esta version:
  * - El numero de generaciones debe estar entre 1 y 50.
  * - La cantidad de organismos iniciales no puede superar la mitad de las
  *   celdas del tablero.
  * - Cada coordenada debe estar dentro del tablero.
- *
+ * <p>
  * Reglas de evolucion de un organismo:
  * - Vivo con menos de 2 vecinos: muere por soledad.
  * - Vivo con 2 o 3 vecinos: sobrevive.
  * - Vivo con mas de 3 vecinos: muere por sobrepoblacion.
  * - Muerto con exactamente 3 vecinos: nace.
- *
+ * <p>
  * Esta clase no guarda estado, por lo que una misma instancia se puede
  * compartir entre ElJuegoDeLaVida y Tablero.
  *
@@ -51,7 +51,7 @@ public class ReglasDelJuego implements Reglas{
 
     /**
      * Verifica los datos iniciales ya separados por organismo.
-     *
+     * <p>
      * El primer elemento es la cantidad de organismos y cada elemento siguiente
      * es una coordenada con el formato fila,columna. Se comprueba, en este
      * orden, que:
@@ -92,7 +92,7 @@ public class ReglasDelJuego implements Reglas{
 
     /**
      * Verifica que una coordenada este dentro del tablero.
-     *
+     * <p>
      * Los indices validos van de 0 a numeroFilas - 1 para la fila y de
      * 0 a numeroColumnas - 1 para la columna.
      *
@@ -131,7 +131,7 @@ public class ReglasDelJuego implements Reglas{
 
     /**
      * Indica si dos generaciones tienen el mismo estado en todas sus celdas.
-     *
+     * <p>
      * Usa Arrays.deepEquals, que compara el contenido de las matrices celda
      * por celda. Un equals normal en arreglos solo compara referencias.
      *
@@ -146,7 +146,7 @@ public class ReglasDelJuego implements Reglas{
 
     /**
      * Indica si en la generacion no queda ningun organismo vivo.
-     *
+     * <p>
      * Recorre la matriz y termina en cuanto encuentra el primer organismo vivo.
      *
      * @param generacionActual matriz de la generacion actual

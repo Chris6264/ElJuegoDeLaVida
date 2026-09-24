@@ -2,12 +2,12 @@ package mx.tecnm.culiacan;
 
 /**
  * Contrato con las reglas de "El Juego de la Vida".
- *
+ * <p>
  * Reune dos tipos de reglas:
- *
+ * <p>
  *   - Validaciones de los datos que escribe el usuario: numero de generaciones, datos iniciales y coordenadas.
  *   - Reglas de la simulacion: como cambia el estado de un organismo y cuando termina el juego.
- *
+ * <p>
  * {@link ElJuegoDeLaVida} y {@link Tablero} dependen de esta interfaz y no de
  * una implementacion concreta, asi que se pueden usar otras reglas sin
  * modificarlos. La implementacion actual es {@link ReglasDelJuego}.
@@ -33,7 +33,7 @@ public interface Reglas {
 
     /**
      * Verifica los datos iniciales ya separados por organismo.
-     *
+     * <p>
      * El primer elemento es la cantidad de organismos y cada elemento
      * siguiente es una coordenada con el formato {@code fila,columna}.
      * Se comprueba que la cantidad sea valida, que coincida con las
@@ -59,7 +59,7 @@ public interface Reglas {
 
     /**
      * Calcula el estado que tendra un organismo en la siguiente generacion.
-     *
+     * <p>
      *   - Un organismo vivo con menos de 2 o mas de 3 vecinos muere.
      *   - Un organismo vivo con 2 o 3 vecinos sigue vivo.
      *   - Una celda muerta con exactamente 3 vecinos vivos nace.

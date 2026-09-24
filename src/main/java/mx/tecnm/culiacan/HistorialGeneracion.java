@@ -4,7 +4,7 @@ import java.util.List;
 
 /**
  * Registro de una generacion del juego.
- *
+ * <p>
  * Guarda el numero de la generacion y los datos de todas sus celdas: el estado
  * que tenia cada una, sus vecinos vivos y el estado en que se convierte en la
  * siguiente generacion.

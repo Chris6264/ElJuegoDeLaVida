@@ -5,12 +5,12 @@ import java.util.List;
 
 /**
  * Tablero de "El Juego de la Vida".
- *
+ * <p>
  * Guarda la matriz con el estado de cada celda (vivo o muerto), calcula los
  * vecinos y el resultado de cada celda, y avanza el juego de una generacion a
  * la siguiente. Tambien conserva la generacion anterior para poder saber si el
  * tablero dejo de cambiar.
- *
+ * <p>
  * No interactua con el usuario: quien muestra el tablero y decide cuando
  * avanzar es ElJuegoDeLaVida. Las validaciones y el calculo del nuevo estado de
  * cada organismo los delega en Reglas.
@@ -52,7 +52,7 @@ public class Tablero {
     /**
      * Valida los datos iniciales, coloca los organismos vivos en el tablero y
      * calcula los registros de la generacion 1.
-     *
+     * <p>
      * Los datos tienen el formato "numeroOrganismos, fila1,columna1, fila2,columna2, ...".
      * Si son invalidos se lanza una excepcion antes de modificar el tablero.
      *
@@ -73,7 +73,7 @@ public class Tablero {
 
     /**
      * Avanza el tablero a la siguiente generacion.
-     *
+     * <p>
      * Primero guarda una copia del tablero actual, luego aplica el resultado
      * ya calculado de cada celda y por ultimo calcula los registros de la nueva
      * generacion. El orden importa: los resultados se calcularon con el tablero

@@ -3,11 +3,11 @@ package mx.tecnm.culiacan;
 /**
  * Excepcion que se lanza cuando los datos del usuario no cumplen las reglas
  * de "El Juego de la Vida".
- *
+ * <p>
  * Se usa, por ejemplo, cuando el numero de generaciones esta fuera del rango
  * permitido, cuando la cantidad de organismos iniciales no es valida o cuando
  * una coordenada cae fuera del tablero.
- *
+ * <p>
  * Es una excepcion no verificada (extiende RuntimeException), por lo que los
  * metodos que la lanzan no necesitan declararla con throws. Quien inicia el
  * juego puede capturarla y mostrar solo el mensaje con getMessage() en vez del

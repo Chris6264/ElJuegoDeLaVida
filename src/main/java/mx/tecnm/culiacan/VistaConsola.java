@@ -4,11 +4,11 @@ import java.util.List;
 
 /**
  * Vista de consola de "El Juego de la Vida".
- *
+ * <p>
  * Se encarga exclusivamente de mostrar informacion al usuario mediante la
  * consola. Presenta mensajes de entrada, datos generales de la partida,
  * generaciones, mensajes de fin del juego e historial de movimientos.
- *
+ * <p>
  * Esta clase no contiene logica del juego ni modifica el estado del tablero.
  * Su responsabilidad es solamente la presentacion de la informacion.
  *
@@ -62,7 +62,7 @@ public class VistaConsola {
     /**
      * Muestra las instrucciones y el formato esperado para introducir
      * los organismos iniciales del tablero.
-     *
+     * <p>
      * El formato esperado es
      * {@code numeroOrganismos, fila1,columna1, fila2,columna2, ...}.
      */
@@ -114,7 +114,7 @@ public class VistaConsola {
 
     /**
      * Muestra un resumen de los datos iniciales de la partida.
-     *
+     * <p>
      * Incluye las dimensiones del tablero, el numero de generaciones
      * solicitado y las coordenadas de los organismos vivos iniciales.
      *
@@ -142,7 +142,7 @@ public class VistaConsola {
 
     /**
      * Muestra el historial completo de generaciones de la partida.
-     *
+     * <p>
      * Cada generacion se imprime como una tabla que contiene la posicion
      * de cada celda, su estado actual, el numero de vecinos vivos y el
      * estado resultante.
@@ -164,7 +164,7 @@ public class VistaConsola {
     /**
      * Convierte los datos iniciales introducidos por el usuario en una
      * representacion legible de las coordenadas de cada organismo.
-     *
+     * <p>
      * Se omite el primer dato, ya que representa la cantidad total de
      * organismos.
      *
@@ -193,7 +193,7 @@ public class VistaConsola {
     /**
      * Imprime una tabla con los registros de todas las celdas de una
      * generacion.
-     *
+     * <p>
      * Para cada celda muestra su posicion, estado actual, cantidad de
      * vecinos vivos y estado resultante para la siguiente generacion.
      *

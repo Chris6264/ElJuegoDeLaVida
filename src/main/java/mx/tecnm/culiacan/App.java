@@ -2,7 +2,7 @@ package mx.tecnm.culiacan;
 
 /**
  * Punto de entrada del programa "El Juego de la Vida".
- *
+ * <p>
  * Se encarga de armar las dependencias y de iniciar la partida.
  *
  */
