@@ -1,7 +1,5 @@
 package mx.tecnm.culiacan;
 
-import java.util.Arrays;
-
 /**
  * Implementacion de las reglas clasicas de "El Juego de la Vida".
  * <p>
@@ -45,8 +43,7 @@ public class ReglasDelJuego implements Reglas{
      */
     @Override
     public void validarNumeroGeneraciones(int numeroGeneraciones) {
-        if(numeroGeneraciones > 50 || numeroGeneraciones < 1) throw new ReglasException("El numero de generaciones " +
-                "debe estar entre 1 y 50");
+        if(numeroGeneraciones > 50 || numeroGeneraciones < 1) throw new ReglasException("El numero de generaciones debe estar entre 1 y 50");
     }
 
     /**
@@ -140,8 +137,8 @@ public class ReglasDelJuego implements Reglas{
      * @return true si ambas matrices son iguales; false si difieren o si no hay generacion anterior
      */
     @Override
-    public boolean validarGeneracionesIguales(EstadoOrganismo[][] generacionAnterior, EstadoOrganismo[][] generacionActual) {
-        return Arrays.deepEquals(generacionAnterior, generacionActual); //TODO: HACERLO FUNCIONAR CON DOS STRINGS
+    public boolean validarGeneracionesIguales(String generacionAnterior, String generacionActual) {
+        return generacionActual.equals(generacionAnterior);
     }
 
     /**
@@ -153,13 +150,9 @@ public class ReglasDelJuego implements Reglas{
      * @return true si todas las celdas estan muertas; false si hay al menos un organismo vivo
      */
     @Override
-    public boolean validarTodosOrganismosMuertos(EstadoOrganismo[][] generacionActual) {
-        boolean hayVivos = true;
-        for (EstadoOrganismo[] fila : generacionActual) {
-            for (EstadoOrganismo estado : fila) {
-                if (estado == EstadoOrganismo.VIVO) hayVivos = false;
-            }
-        }
-        return hayVivos; //TODO: HACERLO FUNCIONAR BUSCANDO UN CARACTER V
+    public boolean validarTodosOrganismosMuertos(String generacionActual) {
+        boolean todosMuertos = true;
+        if (generacionActual.contains("V")) todosMuertos = false;
+        return todosMuertos;
     }
 }

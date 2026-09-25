@@ -79,7 +79,7 @@ public interface Reglas {
      * @param generacionActual matriz de la generacion actual
      * @return {@code true} si ambas matrices son iguales; {@code false} si difieren o si no hay generacion anterior
      */
-    boolean validarGeneracionesIguales(EstadoOrganismo[][] generacionAnterior, EstadoOrganismo[][] generacionActual);
+    boolean validarGeneracionesIguales(String generacionAnterior, String generacionActual);
 
     /**
      * Indica si en la generacion no queda ningun organismo vivo.
@@ -87,5 +87,5 @@ public interface Reglas {
      * @param generacionActual matriz de la generacion actual
      * @return {@code true} si todas las celdas estan muertas; {@code false} si hay al menos un organismo vivo
      */
-    boolean validarTodosOrganismosMuertos(EstadoOrganismo[][] generacionActual);
+    boolean validarTodosOrganismosMuertos(String generacionActual);
 }

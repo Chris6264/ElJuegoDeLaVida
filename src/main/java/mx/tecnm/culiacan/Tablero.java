@@ -24,7 +24,7 @@ public class Tablero {
     private final int numeroColumnas;
     private final Reglas reglas;
     private final EstadoOrganismo[][] matrizTablero;
-    private EstadoOrganismo[][] matrizAnterior;
+    private String matrizAnterior;
     private List<RegistroCelda> registroCeldas = List.of();
 
     /**
@@ -80,7 +80,7 @@ public class Tablero {
      * viejo, asi que ningun cambio afecta el conteo de vecinos de otra celda.
      */
     public void nextGeneration() {
-        matrizAnterior = copiarMatriz();
+        matrizAnterior = toString();
         for (RegistroCelda registroCelda : registroCeldas) {
             matrizTablero[registroCelda.fila()][registroCelda.columna()] = registroCelda.resultado();
         }
@@ -94,7 +94,7 @@ public class Tablero {
      *         o si todavia no hay generacion anterior
      */
     public boolean generacionRepetida() {
-        return reglas.validarGeneracionesIguales(matrizAnterior, matrizTablero);
+        return reglas.validarGeneracionesIguales(matrizAnterior, toString());
     }
 
     /**
@@ -103,7 +103,7 @@ public class Tablero {
      * @return true si todas las celdas estan muertas; false en caso contrario
      */
     public boolean sinOrganismosVivos() {
-        return reglas.validarTodosOrganismosMuertos(matrizTablero);
+        return reglas.validarTodosOrganismosMuertos(toString());
     }
 
     /**
@@ -203,20 +203,5 @@ public class Tablero {
             }
         }
         return List.copyOf(registros);
-    }
-
-    /**
-     * Crea una copia independiente de la matriz actual, fila por fila. Si solo
-     * se asignara la referencia, la copia y el tablero apuntarian al mismo
-     * arreglo y siempre parecerian iguales.
-     *
-     * @return copia de la matriz del tablero
-     */
-    private EstadoOrganismo[][] copiarMatriz() {
-        EstadoOrganismo[][] copia = new EstadoOrganismo[numeroFilas][];
-        for (int i = 0; i < numeroFilas; i++) {
-            copia[i] = matrizTablero[i].clone();
-        }
-        return copia;
     }
 }
