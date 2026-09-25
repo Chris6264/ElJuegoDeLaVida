@@ -182,10 +182,3 @@ Esto coloca 2 organismos vivos: uno en la celda `(0,1)` y otro en `(3,4)`.
 
 - Java 16 o superior (el proyecto usa **records**, por lo que requiere al menos Java 16).
 - No tiene dependencias externas.
-
-## Cómo ejecutar
-
-```bash
-javac -d out mx/tecnm/culiacan/*.java
-java -cp out mx.tecnm.culiacan.App
-```
