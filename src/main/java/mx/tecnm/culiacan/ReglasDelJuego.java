@@ -123,9 +123,9 @@ public class ReglasDelJuego implements Reglas{
      */
     @Override
     public EstadoOrganismo establecerNuevoEstadoOrganismo(EstadoOrganismo estadoOrganismo, int numeroVecinos){
-        if(estadoOrganismo == EstadoOrganismo.VIVO && numeroVecinos < 2) return EstadoOrganismo.MUERTO;
-        if(estadoOrganismo == EstadoOrganismo.VIVO && numeroVecinos > 3) return EstadoOrganismo.MUERTO;
-        if(estadoOrganismo == EstadoOrganismo.MUERTO && numeroVecinos == 3) return EstadoOrganismo.VIVO;
+        if(estadoOrganismo == EstadoOrganismo.VIVO && numeroVecinos < 2) estadoOrganismo = EstadoOrganismo.MUERTO;
+        else if(estadoOrganismo == EstadoOrganismo.VIVO && numeroVecinos > 3) estadoOrganismo = EstadoOrganismo.MUERTO;
+        else if(estadoOrganismo == EstadoOrganismo.MUERTO && numeroVecinos == 3) estadoOrganismo = EstadoOrganismo.VIVO;
         return estadoOrganismo;
     }
 
@@ -141,7 +141,7 @@ public class ReglasDelJuego implements Reglas{
      */
     @Override
     public boolean validarGeneracionesIguales(EstadoOrganismo[][] generacionAnterior, EstadoOrganismo[][] generacionActual) {
-        return Arrays.deepEquals(generacionAnterior, generacionActual);
+        return Arrays.deepEquals(generacionAnterior, generacionActual); //TODO: HACERLO FUNCIONAR CON DOS STRINGS
     }
 
     /**
@@ -154,11 +154,12 @@ public class ReglasDelJuego implements Reglas{
      */
     @Override
     public boolean validarTodosOrganismosMuertos(EstadoOrganismo[][] generacionActual) {
+        boolean hayVivos = true;
         for (EstadoOrganismo[] fila : generacionActual) {
             for (EstadoOrganismo estado : fila) {
-                if (estado == EstadoOrganismo.VIVO) return false;
+                if (estado == EstadoOrganismo.VIVO) hayVivos = false;
             }
         }
-        return true;
+        return hayVivos; //TODO: HACERLO FUNCIONAR BUSCANDO UN CARACTER V
     }
 }
