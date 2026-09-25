@@ -62,8 +62,6 @@ public class ElJuegoDeLaVida {
         vista.mostrarHistorial(historial);
     }
 
-
-
     /**
      * Solicita las dimensiones del tablero y crea una nueva instancia.
      * <p>
@@ -154,19 +152,24 @@ public class ElJuegoDeLaVida {
     private List<HistorialGeneracion> simularGeneraciones(Tablero tablero, int numeroGeneraciones) {
         List<HistorialGeneracion> historial = new ArrayList<>();
 
-        for (int i = 0; i < numeroGeneraciones; i++) {
+        int generacion = 1;
+        boolean terminado;
 
-            vista.mostrarGeneracion(i + 1, tablero);
+        do {
+            vista.mostrarGeneracion(generacion, tablero);
 
-            historial.add(new HistorialGeneracion(i + 1, tablero.getRegistroCeldas()));
+            historial.add(new HistorialGeneracion(generacion, tablero.getRegistroCeldas()));
 
-            if (juegoTerminado(tablero)) break;
+            terminado = juegoTerminado(tablero);
 
-            if (i < numeroGeneraciones - 1) {
+            if (!terminado && generacion < numeroGeneraciones) {
                 esperarEnter();
                 tablero.nextGeneration();
             }
-        }
+
+            generacion++;
+
+        } while (!terminado && generacion <= numeroGeneraciones);
 
         return historial;
     }
@@ -183,16 +186,19 @@ public class ElJuegoDeLaVida {
      *         {@code false} si puede continuar
      */
     private boolean juegoTerminado(Tablero tablero) {
+        boolean terminado = false;
+
         if (tablero.sinOrganismosVivos()) {
             vista.mostrarOrganismosMuertos();
-            return true;
+            terminado = true;
         }
 
-        if (tablero.generacionRepetida()) {
+        else if (tablero.generacionRepetida()) {
             vista.mostrarGeneracionRepetida();
-            return true;
+            terminado = true;
         }
-        return false;
+
+        return terminado;
     }
 
     /**
