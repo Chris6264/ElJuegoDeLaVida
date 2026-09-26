@@ -99,10 +99,13 @@ public class VistaConsola {
      * generacion actual es igual a la anterior.
      */
     public void mostrarGeneracionRepetida() {
-        System.out.println(
-                "La generacion es igual a la anterior. Fin del juego."
-        );
+        System.out.println("La generacion es igual a la anterior. Fin del juego.");
     }
+
+    public void generacionVista() {
+        System.out.println("La generacion es igual a una vista con anterioridad. Fin del juego.");
+    }
+
 
     /**
      * Muestra el mensaje que solicita al usuario presionar Enter
