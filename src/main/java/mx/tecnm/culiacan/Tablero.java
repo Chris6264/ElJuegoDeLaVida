@@ -1,7 +1,9 @@
 package mx.tecnm.culiacan;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Tablero de "El Juego de la Vida".
@@ -23,9 +25,12 @@ public class Tablero {
     private final int numeroFilas;
     private final int numeroColumnas;
     private final Reglas reglas;
+
     private final EstadoOrganismo[][] matrizTablero;
     private String matrizAnterior;
+
     private List<RegistroCelda> registroCeldas = List.of();
+    private Set<String> generacionesVistas;
 
     /**
      * Crea un tablero con todas las celdas muertas.
@@ -41,6 +46,7 @@ public class Tablero {
         this.numeroColumnas = numeroColumnas;
         this.reglas = reglas;
         this.matrizTablero = new EstadoOrganismo[numeroFilas][numeroColumnas];
+        this.generacionesVistas = new HashSet<>();
 
         for (int i = 0; i < numeroFilas; i++) {
             for (int j = 0; j < numeroColumnas; j++) {
@@ -81,6 +87,7 @@ public class Tablero {
      */
     public void nextGeneration() {
         matrizAnterior = toString();
+        generacionesVistas.add(matrizAnterior);
         for (RegistroCelda registroCelda : registroCeldas) {
             matrizTablero[registroCelda.fila()][registroCelda.columna()] = registroCelda.resultado();
         }
@@ -105,6 +112,8 @@ public class Tablero {
     public boolean sinOrganismosVivos() {
         return reglas.validarTodosOrganismosMuertos(toString());
     }
+
+    public boolean verificarGeneracionVista() {return reglas.validarGeneracionVistaAntes(generacionesVistas,toString());}
 
     /**
      * Devuelve los registros de todas las celdas de la generacion actual, en

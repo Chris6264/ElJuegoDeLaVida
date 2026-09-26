@@ -1,5 +1,7 @@
 package mx.tecnm.culiacan;
 
+import java.util.Set;
+
 /**
  * Implementacion de las reglas clasicas de "El Juego de la Vida".
  * <p>
@@ -154,5 +156,10 @@ public class ReglasDelJuego implements Reglas{
         boolean todosMuertos = true;
         if (generacionActual.contains("V")) todosMuertos = false;
         return todosMuertos;
+    }
+
+    @Override
+    public boolean validarGeneracionVistaAntes(Set<String> generacionesVistas, String generacion) {
+        return generacionesVistas.contains(generacion);
     }
 }

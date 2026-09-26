@@ -1,5 +1,7 @@
 package mx.tecnm.culiacan;
 
+import java.util.Set;
+
 /**
  * Contrato con las reglas de "El Juego de la Vida".
  * <p>
@@ -88,4 +90,6 @@ public interface Reglas {
      * @return {@code true} si todas las celdas estan muertas; {@code false} si hay al menos un organismo vivo
      */
     boolean validarTodosOrganismosMuertos(String generacionActual);
+
+    boolean validarGeneracionVistaAntes(Set<String> generacionesVistas, String generacion);
 }

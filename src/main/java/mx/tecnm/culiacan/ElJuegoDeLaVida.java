@@ -198,6 +198,11 @@ public class ElJuegoDeLaVida {
             terminado = true;
         }
 
+        else if (tablero.verificarGeneracionVista()){
+            vista.generacionVista();
+            terminado = true;
+        }
+
         return terminado;
     }
 
